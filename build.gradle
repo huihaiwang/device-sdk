@@ -1,0 +1,33 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'net.similarsu.sdk'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.shell:spring-shell-starter:2.0.0.RELEASE'
+	implementation group: 'net.java.dev.jna', name: 'jna', version: '5.3.1'
+	implementation group: 'net.java.dev.jna', name: 'jna-platform', version: '5.3.1'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+//	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.10'
+// https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient
+	compile group: 'commons-httpclient', name: 'commons-httpclient', version: '3.1'
+
+
+
+}
+
+bootRun {
+	standardInput = System.in
+}
