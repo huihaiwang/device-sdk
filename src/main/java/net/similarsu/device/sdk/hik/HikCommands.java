@@ -192,8 +192,8 @@ public class HikCommands {
     }
 
     @ShellMethod(key = "login", value = "login")
-    public void login(@ShellOption(defaultValue = "192.168.80.8") String ip, @ShellOption(defaultValue = "8000") short port, @ShellOption(defaultValue = "admin") String user
-            , @ShellOption(defaultValue = "admin12345") String pass) {
+    public void login(@ShellOption(defaultValue = "192.168.70.122") String ip, @ShellOption(defaultValue = "8000") short port, @ShellOption(defaultValue = "admin") String user
+            , @ShellOption(defaultValue = "hik12345") String pass) {
         NET_DVR_USER_LOGIN_INFO netDvrUserLoginInfo = new NET_DVR_USER_LOGIN_INFO();
         netDvrDeviceinfoV40 = new NET_DVR_DEVICEINFO_V40();
         Pointer netDvrUserLoginInfoPointer = netDvrUserLoginInfo.getPointer();
@@ -531,5 +531,21 @@ public class HikCommands {
     }
 
 
+
+    @ShellMethod(key = "setTime", value = "setTime")
+    boolean setDVRTime(){
+        NET_DVR_TIME net_dvr_time = new NET_DVR_TIME();
+        net_dvr_time.dwYear = 2019;
+        net_dvr_time.dwMonth = 11;
+        net_dvr_time.dwDay = 5;
+        net_dvr_time.dwHour = 16;
+        net_dvr_time.dwMinute = 23;
+        net_dvr_time.dwSecond = 30;
+        boolean result = hikLibrary.NET_DVR_SetDVRConfig(login, 119, 1, net_dvr_time.getPointer(), net_dvr_time.size());
+        if (!result) {
+            errorMsg("set dvr time failed");
+        }
+        return result;
+    }
 
 }

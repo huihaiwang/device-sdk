@@ -196,4 +196,16 @@ public interface HikLibrary extends Library {
      */
     int NET_DVR_CaptureJPEGPicture(int lUserID, int lChannel, Pointer lpJpegPara, String sPicFileName);
 
+
+    /**
+     * NET_DVR_SET_TIMECFG            119        //设置DVR时间
+     * @param lUserID
+     * @param dwCommand
+     * @param lChannel
+     * @param lpInBuffer
+     * @param dwInBufferSize
+     * @return
+     */
+    boolean NET_DVR_SetDVRConfig(int lUserID, int dwCommand,int lChannel, Pointer lpInBuffer, int dwInBufferSize);
+
 }
